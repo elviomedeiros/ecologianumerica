@@ -1,0 +1,25 @@
+---
+title: "Tutorial R Módulo 7"
+subtitle: "Análise de Classificação Hierárquica - SAHN"
+page-layout: full
+lang: "pt-br"
+editor: source
+---
+
+# Apresentação
+
+Análise de Classificação Hierárquica (SAHN) é um método de análise de dados utilizado para identificar grupos ou clusters de objetos com base em sua similaridade. É amplamente utilizada em várias áreas, incluindo bioinformática, análise de dados espaciais, agronomia, entre outros. A análise de classificação hierárquica é uma técnica exploratória importante que pode ajudar a identificar padrões e relações em dados não estruturados. No entanto, é importante lembrar que a interpretação dos resultados pode ser subjetiva e depender do contexto da aplicação.
+
+# Objetivos
+
+Os objetivos dessa atividade são,
+
+-   apresentar ao aluno uma avaliação das possíveis decisões a serem tomadas em uma análise de classificação hierárquica, e
+
+-   comparar os possíveis resultados dessas análises.
+
+# Metodologia sugerida
+
+Se necessário, revise as aulas e material de apoio anteriores. Crie uma estrutura organizada que lhe permita replicar os resultados e passos propostos. Faça sua própria pesquisa sobre os temas tratados. Salve seu script do R, vc pode precisar dele depois.
+
+# Siga para o tutorial [clicando aqui](https://elviomedeiros.quarto.pub/ecologia-numerica-r-modulo7/)

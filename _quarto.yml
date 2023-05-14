@@ -8,17 +8,16 @@ website:
   title: "Ecologia Numérica" 
 
   page-footer:
-    right: "This page is built with [Quarto](https://quarto.org/)."
+    right: "Page built with [Quarto](https://quarto.org/) and [NOAA Quarto Simple Template](https://nmfs-opensci.github.io/NOAA-quarto-simple)"
     left: "&copy; [CC-1.0](content/LICENSE.txt)"
 
   sidebar:
     background: "#fd3412"
     logo: _logo7.jpg
-    favicon: images/_logo7.jpg
     pinned: true
     align: center
     tools: 
-      - icon: globe
+      - icon: bank
         href: http://dgp.cnpq.br/dgp/espelhogrupo/28119
         text: "Grupo Ecologia de Rios do Semiárido"
       - icon: envelope
@@ -35,6 +34,8 @@ website:
         text: Base de teórica
       - href: content/R_Modulo_6.qmd
         text: "R Módulo 6"
+      - href: content/R_Modulo_7.qmd
+        text: "R Módulo 7"
       - href: about.qmd
         text: Sobre este site
 
