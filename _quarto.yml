@@ -17,13 +17,9 @@ website:
     pinned: true
     align: center
     tools: 
-    favicon: images/_logo7.jpg
-    pinned: true
-    align: center
-    tools: 
       - icon: bank
         href: http://dgp.cnpq.br/dgp/espelhogrupo/28119
-        text: "Grupo Ecologia de Rios do Semiárido"
+        text: "GDP CNPq"
       - icon: envelope
         href: mailto:elviomedeiros@servidor.uepb.edu.br
         text: "E-Mail"
