@@ -1,0 +1,54 @@
+project: 
+  type: website
+  output-dir: docs
+editor: source
+
+website: 
+  page-navigation: true
+  title: "Ecologia Numérica" 
+
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "&copy; [CC-1.0](content/LICENSE.txt)"
+
+  sidebar:
+    background: "#fd3412"
+    logo: _logo7.jpg
+    favicon: images/_logo7.jpg
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: http://dgp.cnpq.br/dgp/espelhogrupo/28119
+        text: "Grupo Ecologia de Rios do Semiárido"
+      - icon: envelope
+        href: mailto:elviomedeiros@servidor.uepb.edu.br
+        text: "E-Mail"
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Inicio
+      - href: https://elviomedeiros.quarto.pub/
+        text: Base de teórica
+      - href: content/R_Modulo_6.qmd
+        text: "R Módulo 6"
+      - href: about.qmd
+        text: Sobre este site
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss] 
+      dark: [cosmo, theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+filters:
+  - include-files.lua
+  - quarto
+
+lang: "pt-br"

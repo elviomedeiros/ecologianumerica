@@ -1,0 +1,25 @@
+---
+title: "Tutorial R Módulo 6"
+subtitle: "Análise de outliers baseada no desvio padrão do centróide"
+page-layout: full
+lang: "pt-br"
+editor: source
+---
+
+# Apresentação
+
+A análise de outliers baseada no desvio padrão do centróide em análise multivariada é uma técnica utilizada para identificar valores discrepantes em uma matriz de dados com várias variáveis. Essa técnica consiste em calcular o centróide dos dados (ou seja, a média de cada variável), e então calcular o desvio padrão de cada observação em relação ao centróide. Os valores que estão a uma distância maior que um certo número de desvios padrão do centróide são considerados outliers. Essa técnica é útil para identificar observações que podem estar afetando a análise de dados multivariados, como análise de componentes principais, e que podem precisar ser tratadas de forma especial. No entanto, é importante lembrar que a identificação de outliers é uma questão subjetiva e depende do contexto da análise e do objetivo do estudo.
+
+# Objetivos
+
+Os objetivos dessa atividade são,
+
+-   avaliar o entendimento do aluno sobre o conteúdo teórico apresentado referente a analise e detecção de outliers multivariados baseado nos desvios padrões em relação ao centroide; e
+
+-   permitir o aluno averiguar de forma prática os diferentes passos na analise de outliers em estatística multivariada, incentivando a análise detalhada de conjuntos complexos de dados.
+
+# Metodologia sugerida
+
+Se necessário, revise as aulas e material de apoio anteriores. Crie uma estrutura organizada que lhe permita replicar os resultados e passos propostos. Faça sua própria pesquisa sobre os temas tratados. Salve seu script do R, vc pode precisar dele depois.
+
+# Siga para o tutorial [clicando aqui](https://elviomedeiros.quarto.pub/ecologia-numerica-r-modulo6/)
