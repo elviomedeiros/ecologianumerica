@@ -32,15 +32,11 @@ website:
       - href: index.qmd
         text: Inicio
       - href: 2-00-bases.qmd
-        text: "Base de teórica"
+        text: "Bases de dados"
       - href: 3-01-rmd1_xlsx.qmd
         text: "R Módulo 1 - Importando planilhas de dados"
-      - href: content/R_Modulo_6.qmd
-        text: "R Módulo 6"
-      - href: content/R_Modulo_7.qmd
-        text: "R Módulo 7"
       - href: about.qmd
-        text: Sobre este site
+        text: "Sobre este site"
 
 format:
   html:
