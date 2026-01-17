@@ -27,29 +27,21 @@ website:
     style: "docked"
     search: true
 
-collapse-level: 1
-contents:
-  - href: index.qmd
-    text: Início
-
-  - href: https://elviomedeiros.quarto.pub/
-    text: Base teórica
-
-  - section: "R Módulo 1 – Importando planilhas de dados"
+    collapse-level: 1
     contents:
+      - href: index.qmd
+        text: Inicio
+      - href: https://elviomedeiros.quarto.pub/
+        text: Base de teórica
       - href: content/3-01-rmd1_xlsx.qmd
-        text: Introdução
-      - href: content/script.qmd
-        text: Script
+        text: "R Módulo 1 - Importando planilhas de dados"
+      - href: content/R_Modulo_6.qmd
+        text: "R Módulo 6"
+      - href: content/R_Modulo_7.qmd
+        text: "R Módulo 7"
+      - href: about.qmd
+        text: Sobre este site
 
-  - href: content/R_Modulo_6.qmd
-    text: "R Módulo 6"
-
-  - href: content/R_Modulo_7.qmd
-    text: "R Módulo 7"
-
-  - href: about.qmd
-    text: Sobre este site
 format:
   html:
     theme:

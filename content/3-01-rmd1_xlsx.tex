@@ -1,0 +1,1082 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Índice}
+\else
+  \newcommand\contentsname{Índice}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Lista de Figuras}
+\else
+  \newcommand\listfigurename{Lista de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Lista de Tabelas}
+\else
+  \newcommand\listtablename{Lista de Tabelas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabela}
+\else
+  \newcommand\tablename{Tabela}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listagem}
+\newcommand*\listoflistings{\listof{codelisting}{Lista de Listagens}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{brazilian}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Tutorial R Módulo 1. Importando planilhas do Excel},
+  pdfauthor={Prof.~Elvio S. F. Medeiros; Laboratório de Ecologia; Universidade Estadual da Paraíba; Campus V, João Pessoa, PB},
+  pdflang={pt-br},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Tutorial R Módulo 1. Importando planilhas do Excel}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Disciplina de Ecologia Numérica\footnote{Curso de Ciências
+  Biológicas do Campus V da UEPB}}
+\author{Prof.~Elvio S. F. Medeiros \and Laboratório de
+Ecologia \and Universidade Estadual da Paraíba \and Campus V, João
+Pessoa, PB}
+\date{17/01/2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A importação de planilhas do Excel para o ambiente de programação R é
+uma tarefa fundamental para análise de dados e estatísticas. Através da
+importação de planilhas do Excel, é possível transformar dados
+armazenados em formatos familiares em estruturas que podem ser
+manipuladas e exploradas de maneira eficaz no R. Isso permite a
+aplicação de diversas técnicas estatísticas e criação de visualizações
+informativas, contribuindo para a tomada de decisões embasadas em dados.
+Neste contexto, entender como importar dados do Excel para o R é um
+passo crucial para realizar análises de alta qualidade e obter insights
+significativos a partir dos conjuntos de dados disponíveis.
+\end{abstract}
+\renewcommand*\contentsname{Índice}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\listoffigures
+\listoftables
+\hypertarget{apresentauxe7uxe3o}{%
+\section{Apresentação}\label{apresentauxe7uxe3o}}
+
+A importação de planilhas do Excel para o ambiente de programação R é
+uma tarefa fundamental para análise de dados e estatísticas. O R é uma
+linguagem de programação amplamente utilizada por cientistas de dados,
+pesquisadores e analistas para manipular, visualizar e modelar
+informações. Através da importação de planilhas do Excel, é possível
+transformar dados armazenados em formatos familiares em estruturas que
+podem ser manipuladas e exploradas de maneira eficaz no R. Isso permite
+a aplicação de diversas técnicas estatísticas e criação de visualizações
+informativas, contribuindo para a tomada de decisões embasadas em dados.
+Neste contexto, entender como importar dados do Excel para o R é um
+passo crucial para realizar análises de alta qualidade e obter insights
+significativos a partir dos conjuntos de dados disponíveis.
+
+\hypertarget{instalauxe7uxe3o-do-r-e-rstudio}{%
+\section{Instalação do R e
+RStudio}\label{instalauxe7uxe3o-do-r-e-rstudio}}
+
+\hypertarget{r-base}{%
+\subsection{R base}\label{r-base}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  O primeiro passo é entrar na página do projeto CRAN (Comprehensive R
+  Archive Network) \url{https://www.r-project.org/}.\\
+\item
+  Do lado esquerdo da página clique sobre o link CRAN abaixo de
+  Download. 3. Uma nova página com uma série de links irá se abrir.
+  Esses links são chamados de ``espelhos'' e servem para que você possa
+  escolher o local mais próximo de onde você está para fazer o download
+  do programa. Escolha um espelho no Brasil.\\
+\item
+  Na seção Download and Install R, clique sobre o link
+  \texttt{Download\ R\ for\ Windows} para baixar a versão para esse
+  sistema\ldots{} (MacOS??\ldots{} o que é isso?)\\
+\item
+  Clique sobre o link \texttt{base}.
+\item
+  Clique sobre o link \texttt{Download\ R\ 4.x.x\ for\ Windows} para
+  fazer o download do arquivo R.exe.
+\item
+  A instalação segue o formato padrão de instalação de programas no
+  Windows, e portanto não são necessários maiores detalhes.
+\end{enumerate}
+
+\hypertarget{rstudio}{%
+\subsection{RStudio}\label{rstudio}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Para baixar o RStudio entre no endereço
+  \url{https://posit.co/download/rstudio-desktop/}\\
+\item
+  Clique no link \texttt{Products\ \textgreater{}\ RStudio}\\
+\item
+  Selecione a versão Desktop.\\
+\item
+  Clique em \texttt{DOWNLOAD\ RSTUDIO\ DESKTOP}\\
+\item
+  Será exibida uma página com a recomendação para você baixar o RStudio
+  FREE versão mais recente - Windows\\
+\item
+  Clicando nesse link, você irá baixar o arquivo RStudio atual (.exe)
+\item
+  Depois é só clicar e instalar da forma convencional do Windows.
+\end{enumerate}
+
+Após a instalação, você pode abrir o \texttt{RStudio} pelo seu
+respectivo ícone, e o RStudio estará pronto para ser utilizado. O ``R
+base'' continuará instalado mas será acessado pelo RStudio. Não o
+desinstale.
+
+\hypertarget{rstudio-na-nuvem}{%
+\section{RStudio na nuvem}\label{rstudio-na-nuvem}}
+
+Usar o RStudio Cloud \url{https://login.rstudio.cloud/} é uma opção para
+quem não quer instalar a versão para PC. O RStudio Cloud é uma
+plataforma online que fornece um ambiente de desenvolvimento integrado
+para o R, permitindo que os usuários executem análises, desenvolvam
+código e colaborem com outras pessoas, sem a necessidade de instalar o R
+e o RStudio em seus próprios computadores. É uma solução conveniente e
+acessível, especialmente para iniciantes ou usuários que desejam
+compartilhar projetos e colaborar de forma eficiente.
+
+\hypertarget{sobre-os-dados-do-ppbio}{%
+\subsection{Sobre os dados do PPBio}\label{sobre-os-dados-do-ppbio}}
+
+Usaremos para esse tutorial dados coletados no Programa de Pesquisa em
+Biodiversidade - PPBio (veja
+\href{https://ppbio.inpa.gov.br/Sobre}{Programa de Pesquisa em
+Biodiversidade -- PPBio}). Nesta base de dados estão armazenadas
+informações sobre diversos grupos taxonômicos dstribuidos em diversas
+unidades amostrais (UA's ou sítios), como peixes, macroinverbrebrados
+bentônicos, quironomídeos e zooplâncotn, além de dados do habitat, como
+variáveis físicas e químicas, morfologia do habitat, composição do
+substrato, estrutura de habitat marginal, entre outros
+(Figura~\ref{fig-ppbio})). Essa é a \textbf{matriz bruta de dados},
+porque os valores ainda não foram ajustados para os valores de Captura
+Por Unidade de Esforço (CPUE), nem foram relativizados ou transformados
+(Tabela~\ref{tbl-301arqs}).
+
+\begin{figure}
+
+{\centering \includegraphics{D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/ppbio.png}
+
+}
+
+\caption{\label{fig-ppbio}Parte da planilha de dados brutos do PPBio.}
+
+\end{figure}
+
+\hypertarget{tbl-301arqs}{}
+\begin{longtable}{>{\raggedright\arraybackslash}
+\caption{\label{tbl-301arqs}Matrizes disponíveis para análises, com suas descrições e tipos de dados
+recomendados. }\tabularnewline
+p{100px}>{\raggedright\arraybackslash}p{100px}>{\raggedright\arraybackslash}p{250px}>{\raggedright\arraybackslash}p{200px}}
+\toprule
+Arquivo (.xlsx) & Tipo de matriz & Descrição & Tipo de dados \\ 
+\midrule\addlinespace[2.5pt]
+\href{https://docs.google.com/spreadsheets/d/1Olyew6L3SCFeSXWJC54Ak3MKmgHD3sTK/edit?usp=drive_link\&ouid=101766125969589673518\&rtpof=true\&sd=true}{ppbio06c-peixes} & Matriz comunitária & O arquivo ppbio06 traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações do ano diferentes (objetos) x 35 espécies (atributos), antes de qualquer modificação. & Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada. \\ 
+\href{https://docs.google.com/spreadsheets/d/1V_QxcorksaSOa40Uzj1z2jy02WgKeFTx/edit?usp=drive_link\&ouid=101766125969589673518\&rtpof=true\&sd=true}{ppbio06p-amb} & Matriz ambiental & O arquivo ppbio06h traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações diferentes (objetos) x 35 variáveis ambientais (atributos) medidas em diferentes escalas espaciais, antes de qualquer modificação. & Unidades de medição diferentes (cm, m, °C, mg/L, etc.), com alta amplitude de variação, sugerido uso de matriz transformada e/ou reescalada. \\ 
+\href{https://docs.google.com/spreadsheets/d/1H52eBBxZ1k-6Xgrse87etq6mq3mMUTZi/edit?usp=drive_link\&ouid=101766125969589673518\&rtpof=true\&sd=true}{ppbio06-grupos} & Matriz de grupos & O arquivo ppbio06 traz os dados brutos que serão usados nessa análise. A matriz de dados brutos contendo 26 locais/ocasiões (objetos) x 35 espécies (atributos), antes de qualquer modificação. & Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada. \\ 
+ppbio06cpue & Matriz comunitária & O arquivo ppbio06cpue traz os valores após ajuste pela Captura Por Unidade de Esforço (CPUE). & Densidades de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada. \\ 
+\bottomrule
+\end{longtable}
+
+A planilha \texttt{ppbio} contém o delineamento amostral de um dos
+estudos do Projeto PPBio (Figura Figura~\ref{fig-fig3}). Nas linhas são
+apresentadas as abreviações dos nomes das unidades amostrais (UA's) e
+nas colunas são apresentados os nomes abreviados das espécies - temos
+portando uma matriz comunitária (Tabela~\ref{tbl-301arqs})). No corpo da
+planilha temos os valores para o tipo de dados amostrado. Quantitativo,
+semi-quatitativo ou qualitativo.\\
+Qual desses tipos de dados você acha que é apresentado na planilha?
+
+\begin{figure}
+
+{\centering \includegraphics{D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/rm1.fig3.png}
+
+}
+
+\caption{\label{fig-fig3}Associação entre a planilha de dados brutos do
+PPBio e o delineamento amostral do estudo.}
+
+\end{figure}
+
+Várias das espécies nessa matriz tem grande importância ecológica, como
+é o caso de \emph{Astyanax bimaculatus} \footnote{A etimologia do gênero
+  \emph{Astyanax} vem da mitologia Grega. Heitor personagem da
+  ``Ilíada'', tinha um filho chamado Astíanax.}
+(Figura~\ref{fig-asbim}), que é muito comum em rios intermitentes e
+serve de alimento para predadores maiores como a espécie \emph{Hoplias
+malabaricus} \footnote{Do Grego, \emph{hoplon}, arma ou armadura, em
+  referência aos dentes caniniformes muito desenvolvidos, e forte
+  estrutura óssea na cabeça.} (Figura~\ref{fig-hmala}).
+
+\begin{figure}
+
+{\centering \includegraphics{D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/Asbim_u4.jpg}
+
+}
+
+\caption{\label{fig-asbim}\emph{Astyanax bimaculatus}, a espécie mais
+comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte:
+\url{https://www.fishbase.se/summary/Astianax-bimaculatus.html}}
+
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/Homal_u6.jpg}
+
+}
+
+\caption{\label{fig-hmala}\emph{Hoplias malabaricus}, espécie que cresce
+para se tornar um importante predador. Brazil, by Roselet, F.F.G. Fonte:
+\url{https://www.fishbase.se/summary/Hoplias-malabaricus.html}}
+
+\end{figure}
+
+\hypertarget{importando-a-planilha-de-trabalho}{%
+\section{Importando a planilha de
+trabalho}\label{importando-a-planilha-de-trabalho}}
+
+Para começar a usar o R e analisar os dados do Projeto PPBio, abra o
+RStudio, verifique sua interface (Figura~\ref{fig-interface})) e siga as
+instruções a seguir.
+
+\begin{figure}
+
+{\centering \includegraphics{D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/interfaceR.png}
+
+}
+
+\caption{\label{fig-interface}Interface típica do RStudio e nome dos
+paineis ou janelas.}
+
+\end{figure}
+
+\begin{tcolorbox}[enhanced jigsaw, left=2mm, toprule=.15mm, leftrule=.75mm, colback=white, coltitle=black, opacityback=0, colframe=quarto-callout-caution-color-frame, breakable, arc=.35mm, bottomtitle=1mm, colbacktitle=quarto-callout-caution-color!10!white, toptitle=1mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Mensagens de erro e avisos no R}, rightrule=.15mm, titlerule=0mm, bottomrule=.15mm]
+
+No contexto da linguagem de programação R, mensagens de erro (errors) e
+mensagens de aviso (warnings) que {aparecem em vermelho no painel de
+console}. Elas são formas de feedback do sistema que indicam problemas
+ou situações potencialmente problemáticas durante a execução do código.
+Aqui está uma breve explicação de cada um:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Erro ({Error}):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Um erro ocorre quando algo no código não está correto ou não pode
+    ser executado como esperado.
+  \item
+    Isso pode ser causado por sintaxe incorreta, uso incorreto de
+    funções, operações inválidas, referências a objetos que não existem,
+    entre outros problemas.
+  \item
+    Quando ocorre um erro, a execução do código é interrompida e uma
+    mensagem de erro é exibida no console em vermelho, indicando o tipo
+    de erro e, muitas vezes, a linha onde ocorreu.
+  \end{itemize}
+\item
+  \textbf{Aviso ({Warning}):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Não indica erro. Um aviso é emitido quando algo no código pode
+    resultar em um comportamento indesejado ou em resultados
+    inesperados, mas não interrompe necessariamente a execução do
+    código.
+  \item
+    Os avisos geralmente indicam situações que merecem atenção, como
+    conversões de tipos de dados que podem perder informações ou funções
+    que estão sendo usadas de maneira que pode levar a resultados
+    questionáveis.
+  \item
+    Os avisos são exibidos em vermelho no console e fornecem informações
+    sobre a natureza do aviso e, possivelmente, como abordá-lo.
+  \end{itemize}
+\end{enumerate}
+
+É importante prestar atenção a mensagens de erro e avisos, pois eles
+fornecem insights sobre problemas em seu código ou potenciais fontes de
+comportamento inesperado. Resolver erros é fundamental para que o código
+funcione conforme o esperado. Embora os avisos não interrompam a
+execução, investigá-los pode ajudar a evitar problemas futuros ou
+melhorar a qualidade do código.
+
+\end{tcolorbox}
+
+\hypertarget{organizauxe7uxe3o-buxe1sica}{%
+\subsection{Organização básica}\label{organizauxe7uxe3o-buxe1sica}}
+
+\begin{tcolorbox}[enhanced jigsaw, left=2mm, toprule=.15mm, leftrule=.75mm, colback=white, coltitle=black, opacityback=0, colframe=quarto-callout-color-frame, breakable, arc=.35mm, bottomtitle=1mm, colbacktitle=quarto-callout-color!10!white, toptitle=1mm, opacitybacktitle=0.6, title={Attention}, rightrule=.15mm, titlerule=0mm, bottomrule=.15mm]
+
+Os links para baixar as planilhas necessárias para repetir esse tutorial
+podem ser encontrados na seção @ref(download401)
+
+\end{tcolorbox}
+
+No ambiente do RStudio no painel de edição de código execute
+(\texttt{Ctrl+Enter} com o teclado ou \texttt{Run} no editor de código)
+os comandos a seguir, para instalar os pacotes necessários para este
+módulo.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"readxl"}\NormalTok{) }\CommentTok{\#importa arquivos do excel}
+\end{Highlighting}
+\end{Shaded}
+
+E em seguida,
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(readxl)}
+\end{Highlighting}
+\end{Shaded}
+
+Os códigos acima, são usados para instalar e carregar os pacotes
+necessários para este módulo. Esses códigos são comandos para instalar
+pacotes no R. Um pacote é uma coleção de funções, dados e documentação
+que ampliam as capacidades do R (\href{https://cran.r-project.org/}{R
+CRAN}) (R Core Team 2017), e
+\href{https://posit.co/download/rstudio-desktop/}{RStudio} (Team 2022).
+No exemplo acima, o pacote \texttt{readxl} permite ler e escrever
+arquivos Excel no R.
+
+Para instalar um pacote no R, você precisa usar a função
+\texttt{install.packages()}. Depois de instalar um pacote, você precisa
+carregá-lo na sua sessão R com a função \texttt{library()}.
+
+Por exemplo, para carregar o pacote \texttt{readxl}, você precisa
+executar a função \texttt{library(readxl)}. Isso irá permitir que você
+use as funções do pacote na sua sessão R. Você precisa carregar um
+pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote
+instalado.
+
+Agora vamos \textbf{definir o diretório de trabalho}. Esse código é
+usado para obter e definir o diretório de trabalho atual no R. O comando
+\texttt{getwd()} retorna o caminho do diretório onde o R está lendo e
+salvando arquivos. O comando \texttt{setwd()} muda esse diretório de
+trabalho para o caminho especificado entre aspas. No seu caso, você deve
+ajustar o caminho para o seu próprio diretório de trabalho.
+\textbf{Lembre de usar a barra ``/'' entre os diretórios. E não a
+contra-barra ``\textbackslash{}''.}
+
+Usaremos uma matriz multivariada (sítios x espécies, matriz comunitária)
+do Projeto PPBio chamada ppbio**.xlsx que está no diretório
+{``C:/Meu/Diretório/De/Trabalho/Planilha.xlsx''}
+
+Note que o símbolo \texttt{\#} em programação R significa que o texto
+que vem depois dele é um comentário e não será executado pelo programa.
+Isso é útil para explicar o código ou deixar anotações.
+
+Ajuste a segunda linha do código abaixo para refletir
+{``C:/Seu/Diretório/De/Trabalho/Planilha.xlsx''}.
+
+Definindo o diretório de trabalho e installando os pacotes necessários:
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{getwd}\NormalTok{()}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Seu/Diretório/De/Trabalho"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Alternativamente você pode ir na barra de tarefas e escolhes as
+opções:\textbackslash SESSION -\textgreater{} SET WORKING DIRECTORY
+-\textgreater{} CHOOSE DIRECTORY
+
+\hypertarget{prefira-sempre-cuxf3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r}{%
+\subsubsection{Prefira sempre códigos e scripts do que mouse e menus de
+janelas no
+R}\label{prefira-sempre-cuxf3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r}}
+
+\begin{tcolorbox}[enhanced jigsaw, left=2mm, toprule=.15mm, leftrule=.75mm, colback=white, coltitle=black, opacityback=0, colframe=quarto-callout-caution-color-frame, breakable, arc=.35mm, bottomtitle=1mm, colbacktitle=quarto-callout-caution-color!10!white, toptitle=1mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Porque preferir códigos e scripts do que mouse e menus de janelas no R}, rightrule=.15mm, titlerule=0mm, bottomrule=.15mm]
+
+Optar pelo uso de scripts e comandos de teclado no R, em vez das opções
+baseadas em mouse e menus das janelas, oferece várias vantagens
+significativas para quem está envolvido em análises de dados e
+programação. Aqui estão algumas justificativas para essa abordagem:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Reprodutibilidade:} O uso de scripts permite que todas as
+  etapas de análise e manipulação de dados sejam documentadas em um
+  único lugar. Isso facilita a reexecução de todo o processo, tornando a
+  análise reprodutível e permitindo que outras pessoas compreendam e
+  validem o trabalho realizado.
+\item
+  \textbf{Automação:} Comandos de script podem ser facilmente repetidos
+  ou adaptados para diferentes conjuntos de dados. Isso possibilita a
+  automação de tarefas complexas, economizando tempo e reduzindo a
+  possibilidade de erros manuais.
+\item
+  \textbf{Flexibilidade:} Enquanto as opções de mouse e menus podem ser
+  limitadas em termos das ações específicas que permitem, os scripts
+  oferecem uma flexibilidade muito maior. Você pode personalizar cada
+  etapa do processo de análise de acordo com suas necessidades
+  específicas.
+\item
+  \textbf{Eficiência:} A digitação de comandos é geralmente mais rápida
+  do que navegar por menus e clicar em botões, especialmente quando se
+  trata de tarefas repetitivas e/ou complexas.
+\item
+  \textbf{Controle total:} Ao utilizar scripts, você tem controle total
+  sobre cada etapa do processo. Isso é particularmente importante em
+  análises estatísticas, onde pequenas variações nos parâmetros podem
+  ter um grande impacto nos resultados.
+\item
+  \textbf{Aprendizado contínuo:} Escrever e modificar scripts permite um
+  maior aprendizado e domínio da linguagem R. Conforme você ganha
+  experiência, poderá realizar análises mais sofisticadas e explorar
+  recursos avançados.
+\item
+  \textbf{Portabilidade:} Scripts podem ser facilmente compartilhados
+  com outros pesquisadores ou colegas, independentemente do sistema
+  operacional utilizado. Isso torna a colaboração mais fluida e ajuda a
+  evitar problemas de compatibilidade.
+\item
+  \textbf{Melhor entendimento:} Ao escrever e ler scripts, você
+  desenvolve uma compreensão mais profunda dos processos que está
+  realizando. Isso é importante para identificar possíveis erros e
+  interpretar corretamente os resultados.
+\item
+  \textbf{Documentação clara:} Ao escrever um script, você pode
+  adicionar comentários explicativos que descrevem cada passo e sua
+  lógica. Isso resulta em uma documentação clara e autoexplicativa do
+  trabalho realizado.
+\item
+  \textbf{Consistência:} O uso de scripts promove a adoção de práticas
+  consistentes em toda a análise, reduzindo a chance de erros causados
+  por abordagens diferentes em momentos distintos.
+\end{enumerate}
+
+Em resumo, a abordagem baseada em scripts e comandos de teclado oferece
+mais controle, flexibilidade, eficiência e reprodutibilidade, tornando-a
+a escolha preferida para profissionais que buscam análises de dados
+precisas, consistentes e de alta qualidade no ambiente R.
+
+\end{tcolorbox}
+
+\hypertarget{importando-a-planilha}{%
+\section{Importando a planilha}\label{importando-a-planilha}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(readxl)}
+\NormalTok{ppbio06 }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"D:/Elvio/OneDrive/Disciplinas/\_EcoNumerica/5.Matrizes/ppbio06.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"Sheet1"}\NormalTok{, }\AttributeTok{na =} \StringTok{"NA"}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(ppbio06)}
+\FunctionTok{class}\NormalTok{(ppbio06)}
+\end{Highlighting}
+\end{Shaded}
+
+Com essas linhas de código a primeira coluna da matriz importada
+apresenta texto. Não queremos assim porque vamos fazer cálculos
+matemáticos na matriz.
+
+Resolvemos o problema com mais algumas linhas de código.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{ppbio06 }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(ppbio06)}
+\FunctionTok{class}\NormalTok{(ppbio06)}
+\FunctionTok{rownames}\NormalTok{(ppbio06) }\OtherTok{\textless{}{-}}\NormalTok{ ppbio06[,}\DecValTok{1}\NormalTok{] }\CommentTok{\#tem  que ser um df}
+\NormalTok{ppbio06[,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\end{Highlighting}
+\end{Shaded}
+
+Ou podemos instalar esse pacote de importação de arquivos .xlsx para o
+R.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"openxlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Carregamos o pacote \texttt{openxlsx}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(openxlsx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'openxlsx' was built under R version 4.3.2
+\end{verbatim}
+
+Importamos novamente a planilha, usando esse novo pacote.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{ppbio }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\StringTok{"D:/Elvio/OneDrive/Disciplinas/\_EcoNumerica/5.Matrizes/ppbio06.xlsx"}\NormalTok{,}
+                   \AttributeTok{rowNames =}\NormalTok{ T,}
+                   \AttributeTok{colNames =}\NormalTok{ T,}
+                   \AttributeTok{sheet =} \StringTok{"Sheet1"}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(ppbio)}
+\FunctionTok{class}\NormalTok{(ppbio)}
+\NormalTok{ppbio\_ma }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(ppbio) }\CommentTok{\#lê ppbio como uma matriz}
+\FunctionTok{str}\NormalTok{(ppbio\_ma)}
+\FunctionTok{class}\NormalTok{(ppbio\_ma)}
+\CommentTok{\#ppbio}
+\CommentTok{\#ppbio\_ma}
+\end{Highlighting}
+\end{Shaded}
+
+Compare as diferenças. Agora podemos exportar os dados como uma matriz
+de dados em formato de
+\texttt{valores\ separados\ por\ vírgula\ (.csv)}.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{write.table}\NormalTok{(ppbio, }\StringTok{"ppbiocsv.txt"}\NormalTok{, }\AttributeTok{append =}\NormalTok{ F, }\AttributeTok{quote =}\NormalTok{ T, }\StringTok{";"}\NormalTok{, }\AttributeTok{row.names =}\NormalTok{ T)}
+\NormalTok{dir }\OtherTok{\textless{}{-}} \FunctionTok{getwd}\NormalTok{()}
+\FunctionTok{shell.exec}\NormalTok{(dir) }\CommentTok{\#abre o diretorio de trabalho no Windows Explorer}
+\end{Highlighting}
+\end{Shaded}
+
+Podemos carregar o arquivo .csv criado \texttt{ppbiocsv.txt} usando os
+códigos abaixo.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{ppbiocsv }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"ppbiocsv.txt"}\NormalTok{,}
+                     \AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{, }\CommentTok{\#definimos o dígito separador}
+                     \AttributeTok{header =}\NormalTok{ T,}
+                     \AttributeTok{row.names =} \DecValTok{1}\NormalTok{,}
+                     \AttributeTok{na.strings =} \ConstantTok{NA}\NormalTok{)}
+
+\FunctionTok{str}\NormalTok{(ppbiocsv)}
+\NormalTok{ppbiocsv}
+\end{Highlighting}
+\end{Shaded}
+
+Lembre de prestar atenção no dígito separador de decimais '' , '' ou ''
+. '' . Além disso, só estaamos usando \texttt{ppbio**.***} porque o
+diretório de trabalho ja fo definido no início. Se não deveríamos estar
+usando \texttt{C:/Seu/Diretório/De/Trabalho/ppbio**.***}
+
+Alguns comandos para exibir a planilha são ``case-sensitive''
+\texttt{(ignore.case(object))}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\#View(ppbio)}
+\FunctionTok{print}\NormalTok{(ppbio)}
+\NormalTok{ppbio}
+\FunctionTok{str}\NormalTok{(ppbio)}
+\CommentTok{\#?View}
+\CommentTok{\#?view}
+\CommentTok{\#?remove}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{outra-forma-de-achar-e-importar-uma-planilha}{%
+\subsection{Outra forma de achar e importar uma
+planilha}\label{outra-forma-de-achar-e-importar-uma-planilha}}
+
+Essa forma é desaconselhavel porque é demorada e sujeita a erros. Além
+de precisar ser refeita sempre que se quiser abrir uma nova planilha ou
+reabrir a última planilha importada. Veja o tópico
+\protect\hyperlink{prefira-sempre-cuxf3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r}{Prefira
+sempre códigos e scripts do que mouse e menus de janelas no R}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{getwd}\NormalTok{()}
+\NormalTok{ppbio }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\FunctionTok{file.choose}\NormalTok{(),  }\CommentTok{\#abre o windows explorer}
+                   \AttributeTok{rowNames =}\NormalTok{ T, }\AttributeTok{colNames =}\NormalTok{ T,}
+                   \AttributeTok{sheet =} \StringTok{"Sheet1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importando-.ods-do-libreoffice-calc}{%
+\section{\texorpdfstring{Importando \texttt{.ods} do LibreOffice
+Calc}{Importando .ods do LibreOffice Calc}}\label{importando-.ods-do-libreoffice-calc}}
+
+A planilha a seguir pode ser baixada da seção @ref(download401)
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"readODS"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(readODS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'readODS' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{ppbio06.ods }\OtherTok{\textless{}{-}} \FunctionTok{read\_ods}\NormalTok{(}\StringTok{"D:/Elvio/OneDrive/Disciplinas/\_EcoNumerica/5.Matrizes/ppbio06{-}peixes.ods"}\NormalTok{,}
+                   \AttributeTok{row\_names =} \ConstantTok{TRUE}\NormalTok{,}
+                   \AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{,}
+                   \AttributeTok{sheet =} \StringTok{"Sheet1"}\NormalTok{,}
+                   \AttributeTok{as\_tibble =} \ConstantTok{FALSE}\NormalTok{,}
+                   \AttributeTok{na =} \StringTok{"n/a"}\NormalTok{, }\CommentTok{\# quando existem celulas vazias (n/a)}
+\NormalTok{                   )}
+\NormalTok{ppbio06.ods }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(ppbio06.ods)}
+\FunctionTok{str}\NormalTok{(ppbio06.ods)}
+\FunctionTok{class}\NormalTok{(ppbio06.ods)}
+\NormalTok{ppbio06.ods\_ma }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(ppbio06.ods) }\CommentTok{\#lê como uma matriz}
+\FunctionTok{str}\NormalTok{(ppbio06.ods\_ma)}
+\FunctionTok{class}\NormalTok{(ppbio06.ods\_ma)}
+\CommentTok{\#ppbio06.ods}
+\CommentTok{\#ppbio06.ods\_ma}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{manipulando-tabelas-de-dados}{%
+\section{Manipulando tabelas de
+dados}\label{manipulando-tabelas-de-dados}}
+
+\hypertarget{colunas-com-o-mesmo-nome}{%
+\subsection{Colunas com o mesmo nome}\label{colunas-com-o-mesmo-nome}}
+
+Em algumas situações é necessário encontrar colunas com o mesmo nome em
+um conjunto de dados e soma-las ou fazer sua média. Isso pode ocorrer
+quando se está trabalhando com dados de várias fontes e é necessário
+combinar esses diferentes conjuntos de dados.
+
+Considere por exemplo um cenário onde se está trabalhando em um projeto
+de análise de dados ecológicos e você recebeu conjuntos de dados de
+diferentes locais de amostragens enviados por diferentes pesquisadores,
+e cada pesquiador enviou seu conjunto de dados que contém informações
+sobre as mesmas espécies (ou variáveis ambientais). Devido a diferentes
+sistemas de registro ou a falta de comunicação entre os pesquisadores,
+pode haver repetição nos nomes das colunas.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\#Dados de mamíferos roedores}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Rato =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+  \AttributeTok{Musaranho =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{),}
+  \AttributeTok{Rato =} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{), }\CommentTok{\#nome duplicado}
+  \AttributeTok{Esquilo =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+\NormalTok{  Ratão }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+  \AttributeTok{Castor =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+\NormalTok{  Tâmia }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{),}
+  \AttributeTok{Marmota =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+  \AttributeTok{Castor =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\CommentTok{\#nome duplicado}
+  \AttributeTok{check.names =} \ConstantTok{FALSE}
+\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Rato Musaranho Rato Esquilo Ratão Castor Tâmia Marmota Castor
+1    1         4    7       0     1      1    11       1      2
+2    2         5    8       0     1      0    12       2      1
+3    3         6    9       1     0      0    13       0      1
+\end{verbatim}
+
+Por exemplo, no estudo sobre mamíferos roedores acima, quando se combina
+o conjunto geral de dados para realizar uma análise abrangente,
+depara-se com colunas duplicadas, onde a matriz com o conjunto total de
+dados contém espécies repetidas.
+
+Nesse caso, encontrar e resolver colunas com o mesmo nome é crucial para
+garantir a integridade dos dados e realizar uma análise precisa. Você
+deve consolidar essas colunas duplicadas, somando-as ou fazendo sua
+média.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\# Achando colunas com nomes duplicados}
+\NormalTok{dup\_cols }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(df)[}\FunctionTok{duplicated}\NormalTok{(}\FunctionTok{names}\NormalTok{(df))]}
+\CommentTok{\# Somando colunas com o mesmo nome}
+\ControlFlowTok{for}\NormalTok{ (col\_name }\ControlFlowTok{in} \FunctionTok{unique}\NormalTok{(dup\_cols)) \{}
+  \CommentTok{\# Get indices of columns with the same name}
+\NormalTok{  col\_indices }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(}\FunctionTok{names}\NormalTok{(df) }\SpecialCharTok{==}\NormalTok{ col\_name)}
+  \CommentTok{\# Sum columns with the same name}
+\NormalTok{  df[[col\_name]] }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(df[, col\_indices, }\AttributeTok{drop =} \ConstantTok{FALSE}\NormalTok{])}
+\NormalTok{\}}
+\CommentTok{\# Remove as colunas duplicadas originais e mantem as novas colunas que são a soma ("except for the first occurrence")}
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ df[, }\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(}\FunctionTok{names}\NormalTok{(df))]}
+\CommentTok{\# Mostra a nova tabela com colunas repetidas somadas}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Rato Musaranho Esquilo Ratão Castor Tâmia Marmota
+1    8         4       0     1      3    11       1
+2   10         5       0     1      1    12       2
+3   12         6       1     0      1    13       0
+\end{verbatim}
+
+\hypertarget{removendo-linhas-ou-colunas-por-nome}{%
+\subsection{Removendo linhas ou colunas por
+nome}\label{removendo-linhas-ou-colunas-por-nome}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\#Colunas}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(ppbio06.ods, }\AttributeTok{select =} \SpecialCharTok{{-}}\NormalTok{la.chalumnae) }\CommentTok{\#escolhendo uma coluna pelo nome}
+\CommentTok{\#Linhas}
+\NormalTok{del\_rows }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"S{-}A{-}ZA1"}\NormalTok{, }\StringTok{"S{-}R{-}CC1"}\NormalTok{, }\StringTok{"B{-}R{-}ET1"}\NormalTok{)}
+\NormalTok{del\_rows}
+\NormalTok{m\_part }\OtherTok{\textless{}{-}}\NormalTok{ df[}\SpecialCharTok{!}\NormalTok{(}\FunctionTok{row.names}\NormalTok{(df) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(del\_rows)),]}
+\NormalTok{m\_part}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{criando-uma-matriz-de-muxe9dias}{%
+\subsection{Criando uma matriz de
+médias}\label{criando-uma-matriz-de-muxe9dias}}
+
+Por razões diferentes o precedimento anterior pode vir a ser necessário
+de ser aplicado às linhas. Por exemplo, quando se quer somar ou fazer a
+média de amostras diferentes do mesmo ambiente de coleta. Veja a matriz
+abaixo.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\AttributeTok{text =} \StringTok{"}
+\StringTok{Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8}
+\StringTok{A1 0 0 0 0 0 0 6 1}
+\StringTok{A2 0 0 0 2 0 0 10 2}
+\StringTok{B1 93 2 0 177 0 260 2 5}
+\StringTok{B2 0 4 0 8 0 0 83 7}
+\StringTok{C1 0 0 0 0 1 0 0 1}
+\StringTok{C2 0 0 1 0 0 1 0 1}
+\StringTok{C3 0 2 0 2 0 0 0 1}
+\StringTok{"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{row.names =} \DecValTok{1}\NormalTok{)}
+\NormalTok{data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8
+A1   0   0   0   0   0   0   6   1
+A2   0   0   0   2   0   0  10   2
+B1  93   2   0 177   0 260   2   5
+B2   0   4   0   8   0   0  83   7
+C1   0   0   0   0   1   0   0   1
+C2   0   0   1   0   0   1   0   1
+C3   0   2   0   2   0   0   0   1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\CommentTok{\#Inserindo coluna para agrupamentos}
+\FunctionTok{nrow}\NormalTok{(data); }\FunctionTok{ncol}\NormalTok{(data) }\CommentTok{\#no. de N colunas x M linhas}
+\NormalTok{data\_g }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\AttributeTok{Grupos =} \FunctionTok{rownames}\NormalTok{(data), data)}
+\NormalTok{data\_g}
+
+\NormalTok{grps }\OtherTok{\textless{}{-}} \FunctionTok{substr}\NormalTok{(data\_g[, }\DecValTok{1}\NormalTok{], }\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{grps}
+
+\NormalTok{data\_g }\OtherTok{\textless{}{-}}\NormalTok{ data\_g }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Grupos=}\FunctionTok{c}\NormalTok{(grps))}
+
+\CommentTok{\#data\_avg \textless{}{-} aggregate(data\_g[, 9:9], list(data\_g$Grupos), mean)}
+\CommentTok{\#data\_avg}
+
+\NormalTok{data\_avg }\OtherTok{\textless{}{-}}\NormalTok{ data\_g }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Grupos) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\AttributeTok{.cols =} \FunctionTok{everything}\NormalTok{(), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{mean}\NormalTok{(.x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)))}
+\NormalTok{data\_avg}
+
+\NormalTok{data\_dp }\OtherTok{\textless{}{-}}\NormalTok{ data\_g }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Grupos) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\AttributeTok{.cols =} \FunctionTok{everything}\NormalTok{(), }\FunctionTok{list}\NormalTok{(}\AttributeTok{mean =}\NormalTok{ mean, }\AttributeTok{sd =}\NormalTok{ sd)))}
+\CommentTok{\#?across}
+\NormalTok{data\_dp}
+
+\CommentTok{\#Primeira coluna para nomes das linhas }
+\NormalTok{data\_dp }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(data\_dp)}
+\FunctionTok{class}\NormalTok{(data\_dp)}
+\FunctionTok{rownames}\NormalTok{(data\_dp) }\OtherTok{\textless{}{-}}\NormalTok{ data\_dp[,}\DecValTok{1}\NormalTok{]}
+\NormalTok{data\_dp[,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_dp }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(data\_dp, }\DecValTok{1}\NormalTok{)}
+\NormalTok{data\_dp}
+\CommentTok{\#Salvando a matriz}
+\FunctionTok{write.table}\NormalTok{(data\_dp,}
+            \StringTok{"data\_dp.csv"}\NormalTok{,}
+            \AttributeTok{append =}\NormalTok{ F,}
+            \AttributeTok{quote =} \ConstantTok{TRUE}\NormalTok{,}
+            \AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{,}
+            \AttributeTok{row.names =}\NormalTok{ T)}
+\NormalTok{data\_dp\_csv }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data\_dp.csv"}\NormalTok{,}
+                    \AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{,}
+                    \AttributeTok{header =}\NormalTok{ T,}
+                    \AttributeTok{row.names =} \DecValTok{1}\NormalTok{,}
+                    \AttributeTok{na.strings =} \ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{referuxeancias}{%
+\section*{Referências}\label{referuxeancias}}
+\addcontentsline{toc}{section}{Referências}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-RN2774}{}}%
+R Core Team. 2017. \href{https://www.r-project.org/}{R: A language and
+environment for statistical computing}. Book, R Foundation for
+Statistical Computing, Austria.
+
+\leavevmode\vadjust pre{\hypertarget{ref-RN358}{}}%
+Team, Rs. 2022. \href{http://www.rstudio.com/}{RStudio: Integrated
+Development Environment for R}. Book, RStudio, PBC, Boston, MA.
+
+\end{CSLReferences}
+
+\hypertarget{apuxeandices}{%
+\section*{Apêndices}\label{apuxeandices}}
+\addcontentsline{toc}{section}{Apêndices}
+
+\hypertarget{sites-para-consulta}{%
+\subsection*{Sites para consulta}\label{sites-para-consulta}}
+\addcontentsline{toc}{subsection}{Sites para consulta}
+
+Como importar dados do Excel para o R:
+\url{https://youtu.be/U6ksXvvY6Q0}\\
+Como exportar dados do R para o Excel:
+\url{https://youtu.be/a7EJE_2mtGk}
+
+\hypertarget{script-limpo}{%
+\section*{Script limpo}\label{script-limpo}}
+\addcontentsline{toc}{section}{Script limpo}
+
+Aqui apresento o scrip na íntegra sem os textos ou outros comentários.
+Você pode copiar e colar no R para executa-lo. Lembre de remover os
+\texttt{\#} ou \texttt{\#\#} caso necessite executar essas linhas.
+
+
+
+\end{document}

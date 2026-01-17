@@ -42,7 +42,7 @@ A importação de planilhas do Excel para o ambiente de programação R é uma t
 
 ## R base
 
-1. O primeiro passo é entrar na página do projeto CRAN (Comprehensive R Archive Network) (https://www.r-project.org/).  
+1. O primeiro passo é entrar na página do projeto CRAN (Comprehensive R Archive Network) <https://www.r-project.org/>.  
 2. Do lado esquerdo da página clique sobre o link CRAN abaixo de Download. 3. Uma nova página com uma série de links irá se abrir. Esses links são chamados de “espelhos” e servem para que você possa escolher o local mais próximo de onde você está para fazer o download do programa. Escolha um espelho no Brasil.  
 4. Na seção Download and Install R, clique sobre o link `Download R for Windows` para baixar a versão para esse sistema... (MacOS??... o que é isso?)  
 5. Clique sobre o link `base`.
@@ -51,7 +51,7 @@ A importação de planilhas do Excel para o ambiente de programação R é uma t
 
 ## RStudio
 
-1. Para baixar o RStudio entre no endereço (https://posit.co/download/rstudio-desktop/)  
+1. Para baixar o RStudio entre no endereço <https://posit.co/download/rstudio-desktop/>  
 2. Clique no link `Products > RStudio`  
 3. Selecione a versão Desktop.  
 4. Clique em `DOWNLOAD RSTUDIO DESKTOP`  
@@ -63,7 +63,7 @@ Após a instalação, você pode abrir o `RStudio` pelo seu respectivo ícone, e
 
 # RStudio na nuvem
 
-Usar o RStudio Cloud (https://login.rstudio.cloud/) é uma opção para quem não quer instalar a versão para PC. O RStudio Cloud é uma plataforma online que fornece um ambiente de desenvolvimento integrado para o R, permitindo que os usuários executem análises, desenvolvam código e colaborem com outras pessoas, sem a necessidade de instalar o R e o RStudio em seus próprios computadores. É uma solução conveniente e acessível, especialmente para iniciantes ou usuários que desejam compartilhar projetos e colaborar de forma eficiente.
+Usar o RStudio Cloud <https://login.rstudio.cloud/> é uma opção para quem não quer instalar a versão para PC. O RStudio Cloud é uma plataforma online que fornece um ambiente de desenvolvimento integrado para o R, permitindo que os usuários executem análises, desenvolvam código e colaborem com outras pessoas, sem a necessidade de instalar o R e o RStudio em seus próprios computadores. É uma solução conveniente e acessível, especialmente para iniciantes ou usuários que desejam compartilhar projetos e colaborar de forma eficiente.
 
 ## Sobre os dados do PPBio
 
@@ -76,18 +76,43 @@ Usaremos para esse tutorial dados coletados no Programa de Pesquisa em Biodivers
 #| tbl-cap: Matrizes disponíveis para análises, com suas descrições e tipos de dados recomendados. 
 #| echo: false
 #| purl: false
-arqs <- tibble::tribble(
-~"Arquivo (.xlsx)", ~"Tipo de matriz", ~"Descrição", ~"Tipo de dados",
-"ppbio06c", "Matriz comunitária", "O arquivo ppbio06 traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações do ano diferentes (objetos) x 35 espécies (atributos), antes de qualquer modificação.", "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
-"ppbio06h", "Matriz ambiental", "O arquivo ppbio06h traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações diferentes (objetos) x 35 variáveis ambienteis (atributos) medidas em diferentes escalas espaciais, antes de qualquer modificação.", "Unidades de medição diferentes (cm, m, °C, mg/L, etc.), com uma alta amplitude de variação, sugerido uso de matriz transformada e/ou reescalada.",
-"ppbio06", "Matriz comunitária", "O arquivo ppbio06 traz os dados brutos que serão usados nessa análise. A matriz de dados brutos contendo 26 locais/ocasiões (objetos) x 35 espécies (atributos), antes de qualquer modificação.", "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
-"ppbio06cpue", "Matriz comunitária", "O arquivo ppbio06cpue traz os valores depois de terem sidos ajustados pela Captura Por Unidade de Esforço (CPUE), onde o número de indivíduos de cada espécie em uma determinada UA é dividido pelo esforço de captura daquela UA. Isso significa que os dados foram relativizados pela CPUE. A matriz de dados brutos contendo 26 localidades em estações do ano diferentes (objetos) x 35 espécies (atributos), antes de qualquer modificação.", "Densidades de indivíduos (no. de indivíduos por Unidade de Esforço de Captura) com alta amplitude de variação, sugerido uso de matriz relativizada."
+#| warning: false
+library(tibble)
+library(gt)
+arqs <- tribble(
+  ~`Arquivo (.xlsx)`, ~`Tipo de matriz`, ~Descrição, ~`Tipo de dados`,
+  "[ppbio06c-peixes](https://docs.google.com/spreadsheets/d/1Olyew6L3SCFeSXWJC54Ak3MKmgHD3sTK/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz comunitária",
+  "O arquivo ppbio06 traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações do ano diferentes (objetos) x 35 espécies (atributos), antes de qualquer modificação.",
+  "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
+
+  "[ppbio06p-amb](https://docs.google.com/spreadsheets/d/1V_QxcorksaSOa40Uzj1z2jy02WgKeFTx/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz ambiental",
+  "O arquivo ppbio06h traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações diferentes (objetos) x 35 variáveis ambientais (atributos) medidas em diferentes escalas espaciais, antes de qualquer modificação.",
+  "Unidades de medição diferentes (cm, m, °C, mg/L, etc.), com alta amplitude de variação, sugerido uso de matriz transformada e/ou reescalada.",
+
+  "[ppbio06-grupos](https://docs.google.com/spreadsheets/d/1H52eBBxZ1k-6Xgrse87etq6mq3mMUTZi/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz de grupos",
+  "O arquivo ppbio06 traz os dados brutos que serão usados nessa análise. A matriz de dados brutos contendo 26 locais/ocasiões (objetos) x 35 espécies (atributos), antes de qualquer modificação.",
+  "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
+
+  "ppbio06cpue",
+  "Matriz comunitária",
+  "O arquivo ppbio06cpue traz os valores após ajuste pela Captura Por Unidade de Esforço (CPUE).",
+  "Densidades de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada."
 )
-library(knitr)
-library(kableExtra)
-arqsx <- kable(arqs, row.names = FALSE, align="l", booktabs = TRUE)
-arqsx <- kable_styling(arqsx)
-column_spec(arqsx, 1:4, width = c("2cm","2cm","7cm","5cm"))
+
+gt_tbl <- gt(arqs)
+gt_tbl <- fmt_markdown(
+  gt_tbl,
+  columns = "Arquivo (.xlsx)")
+gt_tbl <- cols_width(
+  gt_tbl,
+  `Arquivo (.xlsx)` ~ px(100),
+  `Tipo de matriz` ~ px(100),
+  Descrição ~ px(250),
+  `Tipo de dados` ~ px(200))
+gt_tbl
 ```
 
 A planilha `ppbio` contém o delineamento amostral de um dos estudos do Projeto PPBio (Figura @fig-fig3). Nas linhas são apresentadas as abreviações dos nomes das unidades amostrais (UA's) e nas colunas são apresentados os nomes abreviados das espécies - temos portando uma matriz comunitária (@tbl-301arqs)). No corpo da planilha temos os valores para o tipo de dados amostrado. Quantitativo, semi-quatitativo ou qualitativo.  
@@ -95,7 +120,7 @@ Qual desses tipos de dados você acha que é apresentado na planilha?
 
 ![Associação entre a planilha de dados brutos do PPBio e o delineamento amostral do estudo.](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/rm1.fig3.png){#fig-fig3}
 
-Várias das espécies nessa matriz tem grande importância ecológica, como é o caso de *Astyanax bimaculatus* [^1] (@fig-asbim)), que é muito comum em rios intermitentes e serve de alimento para predadores maiores como a espécie *Hoplias malabaricus* [^2] (@fig-hmala)).
+Várias das espécies nessa matriz tem grande importância ecológica, como é o caso de *Astyanax bimaculatus* [^1] (@fig-asbim), que é muito comum em rios intermitentes e serve de alimento para predadores maiores como a espécie *Hoplias malabaricus* [^2] (@fig-hmala).
 
 [^1]: A etimologia do gênero *Astyanax* vem da mitologia Grega. Heitor personagem da "Ilíada", tinha um filho chamado Astíanax.
 
@@ -470,7 +495,7 @@ data_dp_csv <- read.csv("data_dp.csv",
 ```
 
 
-# Referências
+# Referências {-}
 
 ::: {#refs}
 :::
@@ -478,7 +503,185 @@ data_dp_csv <- read.csv("data_dp.csv",
 # Apêndices {.unnumbered}
 
 ## Sites para consulta {.unnumbered}
-Como importar dados do Excel para o R: [https://youtu.be/U6ksXvvY6Q0]  
-Como exportar dados do R para o Excel: [https://youtu.be/a7EJE_2mtGk]
+Como importar dados do Excel para o R: <https://youtu.be/U6ksXvvY6Q0>  
+Como exportar dados do R para o Excel: <https://youtu.be/a7EJE_2mtGk>
 
- 
+# Script limpo {.unnumbered}
+
+Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os `#` ou `##` caso necessite executar essas linhas.
+
+```{r}
+#| eval: false
+#| echo: false
+#| purl: false
+knitr::purl(input = "D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/ecologianumerica/content/3-01-rmd1_xlsx.qmd",
+            output = "D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/ecologianumerica/scripts/script-3-01-rmd1_xlsx.txt", documentation = 0)
+Script <- readLines("D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/ecologianumerica/scripts/script-3-01-rmd1_xlsx.txt")
+Script <- Script[Script != ""]
+writeLines(Script, "D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/ecologianumerica/scripts/script-3-01-rmd1_xlsx.txt")
+cat(Script, sep = "\n")
+```
+
+```{r}
+#| eval: false
+#| purl: false
+#| code-line-numbers: true
+#| echo: false
+
+## install.packages("readxl") #importa arquivos do excel
+library(readxl)
+## getwd()
+## setwd("C:/Seu/Diretório/De/Trabalho")
+library(readxl)
+ppbio06 <- read_excel("D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06.xlsx", sheet = "Sheet1", na = "NA")
+str(ppbio06)
+class(ppbio06)
+ppbio06 <- as.data.frame(ppbio06)
+class(ppbio06)
+rownames(ppbio06) <- ppbio06[,1] #tem  que ser um df
+ppbio06[,1] <- NULL
+## install.packages("openxlsx")
+library(openxlsx)
+ppbio <- read.xlsx("D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06.xlsx",
+                   rowNames = T,
+                   colNames = T,
+                   sheet = "Sheet1")
+str(ppbio)
+class(ppbio)
+ppbio_ma <- as.matrix(ppbio) #lê ppbio como uma matriz
+str(ppbio_ma)
+class(ppbio_ma)
+#ppbio
+#ppbio_ma
+## write.table(ppbio, "ppbiocsv.txt", append = F, quote = T, ";", row.names = T)
+## dir <- getwd()
+## shell.exec(dir) #abre o diretorio de trabalho no Windows Explorer
+## ppbiocsv <- read.csv("ppbiocsv.txt",
+##                      sep = ";", dec = ",", #definimos o dígito separador
+##                      header = T,
+##                      row.names = 1,
+##                      na.strings = NA)
+## 
+## str(ppbiocsv)
+## ppbiocsv
+## #View(ppbio)
+## print(ppbio)
+## ppbio
+## str(ppbio)
+## #?View
+## #?view
+## #?remove
+## getwd()
+## ppbio <- read.xlsx(file.choose(),  #abre o windows explorer
+##                    rowNames = T, colNames = T,
+##                    sheet = "Sheet1")
+## install.packages("readODS")
+library(readODS)
+ppbio06.ods <- read_ods("D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06-peixes.ods",
+                   row_names = TRUE,
+                   col_names = TRUE,
+                   sheet = "Sheet1",
+                   as_tibble = FALSE,
+                   na = "n/a", # quando existem celulas vazias (n/a)
+                   )
+ppbio06.ods <- na.omit(ppbio06.ods)
+str(ppbio06.ods)
+class(ppbio06.ods)
+ppbio06.ods_ma <- as.matrix(ppbio06.ods) #lê como uma matriz
+str(ppbio06.ods_ma)
+class(ppbio06.ods_ma)
+#ppbio06.ods
+#ppbio06.ods_ma
+#Dados de mamíferos roedores
+df <- data.frame(
+  Rato = c(1, 2, 3),
+  Musaranho = c(4, 5, 6),
+  Rato = c(7, 8, 9), #nome duplicado
+  Esquilo = c(0, 0, 1),
+  Ratão = c(1, 1, 0),
+  Castor = c(1, 0, 0),
+  Tâmia = c(11, 12, 13),
+  Marmota = c(1, 2, 0),
+  Castor = c(2, 1, 1), #nome duplicado
+  check.names = FALSE
+)
+df
+# Achando colunas com nomes duplicados
+dup_cols <- names(df)[duplicated(names(df))]
+# Somando colunas com o mesmo nome
+for (col_name in unique(dup_cols)) {
+  # Get indices of columns with the same name
+  col_indices <- which(names(df) == col_name)
+  # Sum columns with the same name
+  df[[col_name]] <- rowSums(df[, col_indices, drop = FALSE])
+}
+# Remove as colunas duplicadas originais e mantem as novas colunas que são a soma ("except for the first occurrence")
+df <- df[, !duplicated(names(df))]
+# Mostra a nova tabela com colunas repetidas somadas
+print(df)
+## #Colunas
+## df <- subset(ppbio06.ods, select = -la.chalumnae) #escolhendo uma coluna pelo nome
+## #Linhas
+## del_rows <- c("S-A-ZA1", "S-R-CC1", "B-R-ET1")
+## del_rows
+## m_part <- df[!(row.names(df) %in% c(del_rows)),]
+## m_part
+data <- read.table(text = "
+Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8
+A1 0 0 0 0 0 0 6 1
+A2 0 0 0 2 0 0 10 2
+B1 93 2 0 177 0 260 2 5
+B2 0 4 0 8 0 0 83 7
+C1 0 0 0 0 1 0 0 1
+C2 0 0 1 0 0 1 0 1
+C3 0 2 0 2 0 0 0 1
+", header = TRUE, row.names = 1)
+data
+## library("tidyverse")
+## #Inserindo coluna para agrupamentos
+## nrow(data); ncol(data) #no. de N colunas x M linhas
+## data_g <- cbind(Grupos = rownames(data), data)
+## data_g
+## 
+## grps <- substr(data_g[, 1], 1,3)
+## grps
+## 
+## data_g <- data_g %>% mutate(Grupos=c(grps))
+## 
+## #data_avg <- aggregate(data_g[, 9:9], list(data_g$Grupos), mean)
+## #data_avg
+## 
+## data_avg <- data_g %>%
+##   group_by(Grupos) %>%
+##   summarise(across(.cols = everything(), ~ mean(.x, na.rm = TRUE)))
+## data_avg
+## 
+## data_dp <- data_g %>%
+##   group_by(Grupos) %>%
+##   summarise(across(.cols = everything(), list(mean = mean, sd = sd)))
+## #?across
+## data_dp
+## 
+## #Primeira coluna para nomes das linhas
+## data_dp <- as.data.frame(data_dp)
+## class(data_dp)
+## rownames(data_dp) <- data_dp[,1]
+## data_dp[,1] <- NULL
+## data_dp <- round(data_dp, 1)
+## data_dp
+## #Salvando a matriz
+## write.table(data_dp,
+##             "data_dp.csv",
+##             append = F,
+##             quote = TRUE,
+##             sep = ";", dec = ",",
+##             row.names = T)
+## data_dp_csv <- read.csv("data_dp.csv",
+##                     sep = ";", dec = ",",
+##                     header = T,
+##                     row.names = 1,
+##                     na.strings = NA)
+
+
+```
+
