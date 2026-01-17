@@ -1,6 +1,6 @@
 ---
 title: "Disciplina de Ecologia Numérica"
-subtitle: "Disciplina de Ecologia Numérica, Bacharelado em Ciências Biológicas Campus V - UEPB]"
+subtitle: "Disciplina de Ecologia Numérica, Bacharelado em Ciências Biológicas Campus V - UEPB"
 author: 
   - Prof. Elvio S. F. Medeiros  
   - Laboratório de Ecologia

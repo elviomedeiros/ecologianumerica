@@ -1,0 +1,47 @@
+
+
+#  {#bases}
+
+###  {-}
+
+### RESUMO {-}
+
+
+
+
+
+### Codificação das variáveis
+
+Os arquivos da base de dados do projeto são fornecidos em formato Excel (.xlsx). Por exemplo, o arquivo `ppbio06-*.xlsx`, traz os dados brutos que serão usados nas análises. A matriz de dados brutos contem mais de 20 localidades (m=linhas ou objetos) em estações do ano diferentes, e cerca de 35 espécies (n=colunas ou atributos), antes de qualquer modificação. Portando é uma matriz bruta. Os valores são contagens de indivíduos, e apresentam uma alta amplitude de variação, portanto, o uso de uma matriz relativizada é sugerido (Figura \@ref(tab:200arqs)). Nos nomes dos objetos e dos atributos são codificados de acordo com a tabela mostrada na Figura \@ref(fig:200codes).
+
+```{r 200codes, echo=FALSE, purl=FALSE, out.width = if (knitr::is_html_output()) "450" else "0.8\\textwidth", fig.asp = 1, fig.cap="Codificação para as variáveis, espécies de peixes, sítios de amostragem e período de amostragem"}
+knitr::include_graphics("imagens/bases/com-codes.png")
+```
+
+### Abreviações {#abrev}
+
+No interesse de sistematizar o código R das várias matrizes que são comumente usadas em uma AMD, a tabela \@ref(tab:200abr), a seguir, resume seus tipos e abreviações.
+
+```{r 200abr, echo=FALSE, purl=FALSE}
+m_ <- tibble::tribble(
+  ~"Nome", ~"Atributos (colunas)", ~"Abreviação no R",
+  "Matriz comunitaria", "Os atributos são táxons ou OTU's (Unidades Taxonômicas Operacionais) (ex. espécies, gêneros, morfotipos)", "m_com",
+  "Matriz ambiental", "Os atributos são dados ambientais e variáveis  físicas e químicas (ex. pH, condutividade, temperatura)", "m_amb",
+  "Matriz de habitat", "Os atributos são elementos da estrutura do habitat (ex. macróficas, algas, pedras, lama, etc)", "m_hab",
+  "Matriz bruta", "Os atributos ainda não receberam nenhum tipo de tratamento estatísco (valores brutos, como coletados)", "m_bruta",
+  "Matriz transposta", "Os atributos foram transpostos para as linhas", "m_t",
+  "Matriz relativizada", "Os atributos foram relativizados por um critério de tamanho ou de variação (ex. dividir os valores de cada coluna pela soma)", "m_rel, m_relcol, m_rellin",
+  "Matriz transformada", "Foi aplicado um operador matemático a todos os atributos (ex. raiz quadrada, log)", "m_trns, m_log10, m_asrq",
+  "Matriz de distâncias", "Matriz de m x m similaridades ou de distâncias (ex. Euclidiana, Manhattan, Bray-Curtis, etc)", "m_dists, m_euclid, m_bray",
+  "Matriz de trabalho", "Qualquer matriz que seja o foco da análise atual (ex. comunitária, relativizada, etc)", "m_trab",
+  "Matriz particionada", "Foram removidas linhas ou colunas (ex. linhas que são outliers e espécies zeradas)", "m_part",
+  "Base de dados", "Arquivo do Excel planilhado a partir de dados de campo ou de laboratório. Será manejada e particionada no R, para criar a Matriz bruta", "ppbio06.xlsx, zoorebio.xlsx, bentos06.xlsx",
+  )
+library(knitr)
+library(kableExtra)
+m_x <- kable(m_, row.names = FALSE, align = c("l", "c", "c"), booktabs = TRUE, caption = "Nomenclatura das matrizes em AMD em relação aos atributos das colunas e suas abreviações nos códigos do R.", format = if (knitr::is_latex_output()) "latex" else "html")
+m_x <- kable_styling(m_x)
+column_spec(m_x, 1:3, width = c("2cm","5cm","2cm"))
+```
+
+## Referências {-}

@@ -1,0 +1,124 @@
+---
+title: "Bases de Dados. Dados do PPBio Semiárido"
+subtitle: "Exemplos de conjunto de dados ecológicos do Programa de Pesquisa em Biodiversidade (PPBio) do Semiárido"
+author: 
+  - Prof. Elvio S. F. Medeiros  
+  - Laboratório de Ecologia
+  - Universidade Estadual da Paraíba
+  - Campus V, João Pessoa, PB
+date: "`r Sys.Date()`"
+abstract: "Para entender a distribuição das espécies de peixes e seu uso de habitat, uma série de variáveis ambientais foram avaliadas como preditores da composição e riqueza da assembleia de peixes em sistemas aquáticos tropicais semiáridos. Nós pesquisamos a composição de espécies de assembleias de peixes em sistemas aquáticos semiáridos e estabelecemos seu grau de associação com a estrutura do habitat aquático. Os locais consistiam em trechos de riachos com fluxo de água superficial, poças temporárias isoladas e reservatórios artificiais (açudes). A amostragem de peixes foi realizada em quatro ocasiões durante as estações chuvosa (abril e junho de 2006) e seca (setembro e dezembro de 2006)."
+lang: "pt-br"
+editor: source
+toc: true
+number-sections: true
+bibliography: D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Markdown/my_references-x9.bib
+csl: D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Markdown/ecology.csl
+highlight-style: pygments
+format:
+  html:
+    code-fold: false
+    code-overflow: scroll
+    embed-resources: true
+  pdf:
+    lof: true
+    lot: true
+    toc: true
+    code-line-numbers: true
+    colorlinks: true
+  docx: default
+execute:
+  echo: true
+always_allow_html: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Apresentação
+
+Para entender a distribuição das espécies de peixes e seu uso de habitat, uma série de variáveis ambientais foram avaliadas como preditores da composição e riqueza da assembleia de peixes em sistemas aquáticos tropicais semiáridos. Nós pesquisamos a composição de espécies de assembleias de peixes em sistemas aquáticos semiáridos e estabelecemos seu grau de associação com a estrutura do habitat aquático. Os locais consistiam em trechos de riachos com fluxo de água superficial, poças temporárias isoladas e reservatórios artificiais (açudes). A amostragem de peixes foi realizada em quatro ocasiões durante as estações chuvosa (abril e junho de 2006) e seca (setembro e dezembro de 2006).
+
+**Palavras-chave**: rios intermitentes, reservatórios, conservação, composição de substratos.
+
+# Sobre os dados do PPBio
+
+Usaremos ao longo desse livro dados que fazem parte de um estudo mais amplo sobre ecologia de rios do semiárido, coletados no Programa de Pesquisa em Biodiversidade - PPBio (Veja [Programa de Pesquisa em Biodiversidade -- PPBio](https://ppbio.inpa.gov.br/Sobre)). Parte desses dados está armazenada em planilhas de Excel `ppbio**.xlsx` (@fig-200ppbio). Essas matrizes de dados são descritas na @tbl-200arqs. As planilhas `ppbio**.xlsx` contém vários tipos de dados arranjados em matrizes `n x m` que incluem dados de abundância de espécies em diferentes unidades amostrais (UA's), dados da estrutura do habitat físico, e variáveis em escala de bacia hidrográfica, dados de contagem de indivíduos ajustados para Captura Por Unidade de Esforço (CPUE), etc (@fig-200ppbio).
+
+![Parte da planilha de dados brutos do PPBio.](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/ppbio.png){#fig-200ppbio}
+
+Por exemplo, essa é a **matriz bruta de dados**, porque os valores ainda não foram ajustados para os valores de Captura Por Unidade de Esforço (CPUE), nem foram relativizados ou transformados. Outros tipos de arquivos existem sobre esses dados (@tbl-200arqs).
+
+Várias das espécies nessa matriz tem grande importância ecológica, como é o caso de *Astyanax bimaculatus*^[A etimologia do gênero *Astyanax* vem da mitologia Grega. Heitor personagem da "Ilíada", tinha um filho chamado Astíanax.] (@fig-200asbim), que é muito comum em rios intermitentes e serve de alimento para predadores maiores [@RN2908] como a espécie *Hoplias malabaricus*^[Do Grego, *hoplon*, arma ou armadura, em referência aos dentes caniniformes muito desenvolvidos, e forte estrutura óssea na cabeça.] (@fig-200hmala) [@RN2724].
+
+
+![*Astyanax bimaculatus*, a espécie mais comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte: <https://www.fishbase.se/summary/Astianax-bimaculatus.html>](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/Asbim_u4.jpg){#fig-200asbim}
+
+![*Hoplias malabaricus*, espécie que cresce para se tornar um importante predador. Brazil, by Roselet, F.F.G. Fonte: <https://www.fishbase.se/summary/Hoplias-malabaricus.html>](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/Homal_u6.jpg){#fig-200hmala}
+
+Outras espécies como *Apareiodon hasemani*^[A etimologia do nome *Apareiodon* vem do Grego, *a*, sem, *pareia*, lateral ou bochecha, e *odous* dentição, em referência a ausência de dentes laterais no aparato bucal dessa espécie."] (@fig-200apdavis) tem importância trófica por estar na base da cadeia alimentar, enquanto espécies da família Loricariidae, como *Pseudancistrus genisetiger*^[A etimologia do nome *Pseudancistrus* vem do Grego, *pseudes*, falso, e *agkistron*, gancho, em referência a falsos ganchos presentes na cabeça em algumas espécies do gênero.] (@fig-200pgen), tem importância para taxonomia.
+
+![*Apareiodon sp.*, importante espécie bentopelágica das bacias dos rios Jaguaribe e Paraíba. Brazil, by Ramos, T.P.A. Fonte: <https://www.fishbase.se/summary/Apareiodon-davisi.html>](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/Apdav_u0.jpg){#fig-200apdavis}
+
+![*Pseudancistrus genisetiger*, uma espécie endêmica das bacias hidrográfcas do nordeste. By Medeiros, E.S.F. Fonte: Arquivo pessoal](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/spp/genis.jpg){#fig-200pgen}
+
+
+As planilhas `ppbio**.xlsx` contém o delineamento amostral de um dos estudos do Projeto PPBio (@fig-200del). Nas linhas são apresentadas as abreviações dos nomes das unidades amostrais (UA's) e nas colunas são apresentados os nomes abreviados das espécies - temos portando uma matriz comunitária (@tbl-200arqs). No corpo da planilha temos os valores para o tipo de dados amostrado. Quantitativo, semi-quatitativo ou qualitativo.  
+Qual desses tipos de dados você acha que é apresentado na planilha?
+
+![Associação entre a planilha de dados brutos do PPBio e o delineamento amostral do estudo.](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/rm1.fig3.png){#fig-200del}
+
+# Arquivos disponíveis
+
+A seguir, apresento uma tabela com as informações essenciais sobre as matrizes de dados que serão utilizadas ao longo deste livro (@tbl-200arqs)). Nela, estão descritos os diferentes tipos de matrizes, suas finalidades analíticas e o tipo de dado para cada uma delas. Essas informações servirão de referência para compreender a origem, a estrutura e o tratamento recomendado para os dados empregados nas análises subsequentes.
+Você pode baixar essas matrizes clicando no link para o arquivo em `.xlsx` na coluna `Arquivo`. Ao vizualizar a matriz que deseja baixar, clique em `Arquivo` > `Baixar` > `Microsoft Excel (.xlsx)`. Atente para a pasta onde seu computador baixa o arquivo desejado, você vai precisar dessa informação depois.
+
+```{r}
+#| label: tbl-200arqs
+#| tbl-cap: Matrizes disponíveis para análises, com suas descrições e tipos de dados recomendados. 
+#| echo: false
+#| purl: false
+#| warning: false
+library(tibble)
+library(gt)
+arqs <- tribble(
+  ~`Arquivo (.xlsx)`, ~`Tipo de matriz`, ~Descrição, ~`Tipo de dados`,
+  "[ppbio06c-peixes](https://docs.google.com/spreadsheets/d/1Olyew6L3SCFeSXWJC54Ak3MKmgHD3sTK/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz comunitária",
+  "O arquivo ppbio06 traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações do ano diferentes (objetos) x 35 espécies (atributos), antes de qualquer modificação.",
+  "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
+
+  "[ppbio06p-amb](https://docs.google.com/spreadsheets/d/1V_QxcorksaSOa40Uzj1z2jy02WgKeFTx/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz ambiental",
+  "O arquivo ppbio06h traz os dados brutos que serão usados nas análises. A matriz de dados brutos contendo 26 localidades em estações diferentes (objetos) x 35 variáveis ambientais (atributos) medidas em diferentes escalas espaciais, antes de qualquer modificação.",
+  "Unidades de medição diferentes (cm, m, °C, mg/L, etc.), com alta amplitude de variação, sugerido uso de matriz transformada e/ou reescalada.",
+
+  "[ppbio06-grupos](https://docs.google.com/spreadsheets/d/1H52eBBxZ1k-6Xgrse87etq6mq3mMUTZi/edit?usp=drive_link&ouid=101766125969589673518&rtpof=true&sd=true)",
+  "Matriz de grupos",
+  "O arquivo ppbio06 traz os dados brutos que serão usados nessa análise. A matriz de dados brutos contendo 26 locais/ocasiões (objetos) x 35 espécies (atributos), antes de qualquer modificação.",
+  "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
+
+  "ppbio06-cpue",
+  "Matriz comunitária",
+  "O arquivo ppbio06cpue traz os valores após ajuste pela Captura Por Unidade de Esforço (CPUE).",
+  "Densidades de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada."
+)
+
+gt_tbl <- gt(arqs)
+gt_tbl <- fmt_markdown(
+  gt_tbl,
+  columns = "Arquivo (.xlsx)")
+gt_tbl <- cols_width(
+  gt_tbl,
+  `Arquivo (.xlsx)` ~ pct(12),
+  `Tipo de matriz` ~ pct(13),
+  Descrição ~ pct(38),
+  `Tipo de dados` ~ pct(30))
+gt_tbl <- tab_options(
+  gt_tbl,
+  row.striping.background_color = "#F2F2F2",
+  table.width = pct(100),
+  data_row.padding = px(6))
+gt_tbl
+```
+
+

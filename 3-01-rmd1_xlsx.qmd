@@ -96,7 +96,7 @@ arqs <- tribble(
   "O arquivo ppbio06 traz os dados brutos que serão usados nessa análise. A matriz de dados brutos contendo 26 locais/ocasiões (objetos) x 35 espécies (atributos), antes de qualquer modificação.",
   "Contagens de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada.",
 
-  "ppbio06cpue",
+  "ppbio06-cpue",
   "Matriz comunitária",
   "O arquivo ppbio06cpue traz os valores após ajuste pela Captura Por Unidade de Esforço (CPUE).",
   "Densidades de indivíduos com alta amplitude de variação, sugerido uso de matriz relativizada."
@@ -108,14 +108,19 @@ gt_tbl <- fmt_markdown(
   columns = "Arquivo (.xlsx)")
 gt_tbl <- cols_width(
   gt_tbl,
-  `Arquivo (.xlsx)` ~ px(100),
-  `Tipo de matriz` ~ px(100),
-  Descrição ~ px(250),
-  `Tipo de dados` ~ px(200))
+  `Arquivo (.xlsx)` ~ pct(12),
+  `Tipo de matriz` ~ pct(13),
+  Descrição ~ pct(38),
+  `Tipo de dados` ~ pct(30))
+gt_tbl <- tab_options(
+  gt_tbl,
+  row.striping.background_color = "#F2F2F2",
+  table.width = pct(100),
+  data_row.padding = px(6))
 gt_tbl
 ```
 
-A planilha `ppbio` contém o delineamento amostral de um dos estudos do Projeto PPBio (Figura @fig-fig3). Nas linhas são apresentadas as abreviações dos nomes das unidades amostrais (UA's) e nas colunas são apresentados os nomes abreviados das espécies - temos portando uma matriz comunitária (@tbl-301arqs)). No corpo da planilha temos os valores para o tipo de dados amostrado. Quantitativo, semi-quatitativo ou qualitativo.  
+A planilha `ppbio` contém o delineamento amostral de um dos estudos do Projeto PPBio (Figura @fig-fig3). Nas linhas são apresentadas as abreviações dos nomes das unidades amostrais (UA's) e nas colunas são apresentados os nomes abreviados das espécies - temos portando uma matriz comunitária (@tbl-301arqs). No corpo da planilha temos os valores para o tipo de dados amostrado. Quantitativo, semi-quatitativo ou qualitativo.  
 Qual desses tipos de dados você acha que é apresentado na planilha?
 
 ![Associação entre a planilha de dados brutos do PPBio e o delineamento amostral do estudo.](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/rm1.fig3.png){#fig-fig3}
