@@ -69,7 +69,8 @@ Qual desses tipos de dados você acha que é apresentado na planilha?
 
 # Arquivos disponíveis
 
-A seguir, apresento uma tabela com as informações essenciais sobre as matrizes de dados que serão utilizadas ao longo deste livro (@tbl-200arqs)). Nela, estão descritos os diferentes tipos de matrizes, suas finalidades analíticas e o tipo de dado para cada uma delas. Essas informações servirão de referência para compreender a origem, a estrutura e o tratamento recomendado para os dados empregados nas análises subsequentes.
+A seguir, apresento uma tabela com as informações essenciais sobre as matrizes de dados que serão utilizadas ao longo deste livro (@tbl-200arqs). Nela, estão descritos os diferentes tipos de matrizes, suas finalidades analíticas e o tipo de dado para cada uma delas. Essas informações servirão de referência para compreender a origem, a estrutura e o tratamento recomendado para os dados empregados nas análises subsequentes.
+
 Você pode baixar essas matrizes clicando no link para o arquivo em `.xlsx` na coluna `Arquivo`. Ao vizualizar a matriz que deseja baixar, clique em `Arquivo` > `Baixar` > `Microsoft Excel (.xlsx)`. Atente para a pasta onde seu computador baixa o arquivo desejado, você vai precisar dessa informação depois.
 
 ```{r}
@@ -125,17 +126,18 @@ gt_tbl
 
 Os arquivos da base de dados do projeto são fornecidos em formato Excel (.xlsx). Por exemplo, o arquivo `ppbio06-*.xlsx`, traz os dados brutos que serão usados nas análises. A matriz de dados brutos contem mais de 20 localidades (m=linhas ou objetos) em estações do ano diferentes, e cerca de 35 espécies (n=colunas ou atributos), antes de qualquer modificação. Portando é uma matriz bruta. Os valores são contagens de indivíduos, e apresentam uma alta amplitude de variação, portanto, o uso de uma matriz relativizada é sugerido (@tbl-200arqs). Nos nomes dos objetos e dos atributos são codificados de acordo com a tabela mostrada na @fig-200codes).
 
-```{r 200codes, echo=FALSE, purl=FALSE, out.width = if (knitr::is_html_output()) "450" else "0.8\\textwidth", fig.asp = 1, fig.cap="Codificação para as variáveis, espécies de peixes, sítios de amostragem e período de amostragem"}
-knitr::include_graphics("imagens/bases/com-codes.png")
-```
-
 ![Codificação para as variáveis, espécies de peixes, sítios de amostragem e período de amostragem.](D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/3.R_Quarto/imagens/bases/com-codes.png){#fig-200codes}
 
 ## Abreviações
 
-No interesse de sistematizar o código R das várias matrizes que são comumente usadas em uma AMD, a @tbl-200abr), a seguir, resume seus tipos e abreviações.
+No interesse de sistematizar o código R das várias matrizes que são comumente usadas em uma AMD, a @tbl-200abr, a seguir, resume seus tipos e abreviações.
 
-```{r tbl-200abr, echo=FALSE, purl=FALSE}
+```{r}
+#| label: tbl-200abr
+#| tbl-cap: Nomenclatura das matrizes em AMD em relação aos atributos das colunas e suas abreviações nos códigos do R. 
+#| echo: false
+#| purl: false
+#| warning: false
 m_ <- tibble::tribble(
   ~"Nome", ~"Atributos (colunas)", ~"Abreviação no R",
   "Matriz comunitaria", "Os atributos são táxons ou OTU's (Unidades Taxonômicas Operacionais) (ex. espécies, gêneros, morfotipos)", "m_com",
@@ -152,7 +154,7 @@ m_ <- tibble::tribble(
   )
 library(knitr)
 library(kableExtra)
-m_x <- kable(m_, row.names = FALSE, align = c("l", "c", "c"), booktabs = TRUE, caption = "Nomenclatura das matrizes em AMD em relação aos atributos das colunas e suas abreviações nos códigos do R.", format = if (knitr::is_latex_output()) "latex" else "html")
+m_x <- kable(m_, row.names = FALSE, align = c("l", "c", "c"), booktabs = TRUE, format = if (knitr::is_latex_output()) "latex" else "html")
 m_x <- kable_styling(m_x)
 column_spec(m_x, 1:3, width = c("2cm","5cm","2cm"))
 ```
