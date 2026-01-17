@@ -31,8 +31,8 @@ website:
     contents:
       - href: index.qmd
         text: Inicio
-      - href: https://elviomedeiros.quarto.pub/
-        text: Base de teórica
+      - href: 2-00-bases.qmd
+        text: "Base de teórica"
       - href: 3-01-rmd1_xlsx.qmd
         text: "R Módulo 1 - Importando planilhas de dados"
       - href: content/R_Modulo_6.qmd
